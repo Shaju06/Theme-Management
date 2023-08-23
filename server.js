@@ -1,4 +1,4 @@
-import express from 'express';
+import express  from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(dbConnection)
 setApplicationHeaderOptions(app)
 
-// API routes
+// // API routes
 app.post('/api/login', async (req, res) => {
 
     const {userName, password } = req.body
@@ -51,7 +51,7 @@ app.post('/api/login', async (req, res) => {
       }
 });
 
-app.patch('/api/update/',verifyToken, async (req, res) => {
+app.patch('/api/update',verifyToken, async (req, res) => {
   
   const {primaryColor} = req.body
   const userCollection = req.collection
@@ -90,6 +90,10 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ message: 'An error occurred.' });
   }
 });
+
+app.get('/hello',(req, res)=> {
+  res.send('Hello')
+})
 
 
 // All other routes should serve the React app

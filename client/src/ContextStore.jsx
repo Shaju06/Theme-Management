@@ -20,18 +20,12 @@ export default function AppContextWrapper(props) {
   const token = sessionStorage.getItem('token');
   const primaryColor = sessionStorage.getItem('primaryColor');
 
- 
-
-
   const [contextState, setContextState] = useState({
     primaryColor: primaryColor ,
     token: token,
     isLoggedIn: token  ? true : false, 
     themeColors
   })
-
-  console.log(token,primaryColor, contextState)
-
 
   return (
     <AppContext.Provider

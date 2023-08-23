@@ -1,8 +1,6 @@
 import AppRoutes from './route';
 import { BrowserRouter } from 'react-router-dom';
-import Home from './components/Home';
 import AppContextWrapper from './ContextStore';
-import SignIn from './components/SignIn';
 
 function App() {
   return (

@@ -24,7 +24,7 @@ React.useEffect(()=> {
     return navigate('/')
   }
 
-},[isLoggedIn])
+},[isLoggedIn, navigate])
 
 
 console.log(isLoginFailed)
@@ -38,15 +38,13 @@ console.log(isLoginFailed)
       password: data.get('password'),
     } 
 
-    console.log(process.env, 'sfsdfsd')
-
     try {
-      const response = await axios.post('http://localhost:5000/api/login', payload);
+      const response = await axios.post('/api/login', payload);
  
       // Storing the token in sessionStorage for now
       sessionStorage.setItem('token', response.data.token);
       sessionStorage.setItem('primaryColor', response.data.primaryColor);
-      console.log(response, 'response')
+      
       setContextState((prev) => {
         return {...prev, token: response.data.token, isLoggedIn: true, primaryColor: response.data.primaryColor}
       })

@@ -7,10 +7,6 @@ function Home() {
 
 const {primaryColor } = useAppContext()
 
-
-
-console.log(primaryColor, 'primaryColor')
-
 const sectionStyle = {
     backgroundColor: primaryColor,
     padding: '20px',

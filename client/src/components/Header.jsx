@@ -20,7 +20,7 @@ const navigation = useNavigate()
     
     try {
       const token = sessionStorage.getItem('token')
-      const response = await axios.patch('http://localhost:5000/api/update',{primaryColor: color},  {
+      await axios.patch('/api/update',{primaryColor: color},  {
         headers: {
           Authorization: `${token}`, 
         },
