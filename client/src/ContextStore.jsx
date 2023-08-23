@@ -1,32 +1,43 @@
-import React, {createContext, useState } from "react";
+import React, {createContext, useState, useContext } from "react";
 
- const ThemeColors = {
-  primary: "red",
-  blue: "blue",
-  yellow: "yellow",
-  purple: "purple",
-  orange: "orange",
-  green: "green"
+ const themeColors = [
+  "red",
+  "blue",
+   "yellow",
+   "purple",
+  "orange",
+  "green"
+ ];
 
-};
+  const AppContext = createContext();
 
- const ThemeColorContext = createContext({
-  color: ThemeColors.blue,
-  changeColor: (color) => {},
-});
+ export function useAppContext() {
+  return useContext(AppContext)
+ }
 
-export default function ThemeColorWrapper(props) {
-  const [color, setColor] = useState(ThemeColors.blue);
+export default function AppContextWrapper(props) {
 
-  function changeColor(color) {
-    setColor(color);
-  }
+  const token = sessionStorage.getItem('token');
+  const primaryColor = sessionStorage.getItem('primaryColor');
+
+ 
+
+
+  const [contextState, setContextState] = useState({
+    primaryColor: primaryColor ?? themeColors[0],
+    token: token,
+    isLoggedIn: token  ? true : false, 
+    themeColors
+  })
+
+  console.log(token,primaryColor, contextState)
+
 
   return (
-    <ThemeColorContext.Provider
-      value={{ color: color, changeColor: changeColor }}
+    <AppContext.Provider
+      value={{...contextState, setContextState}}
     >
       {props.children}
-    </ThemeColorContext.Provider>
+    </AppContext.Provider>
   );
 }

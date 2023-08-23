@@ -1,22 +1,20 @@
-import './App.css';
-import ColorThemeMenu from './components/ColorThemeMenu';
-import ThemeColorContext from './ContextStore';
+import AppRoutes from './route';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './components/Home';
+import AppContextWrapper from './ContextStore';
+import SignIn from './components/SignIn';
 
 function App() {
   return (
-    <div className="App">
+    <AppContextWrapper>
+    <BrowserRouter>
+ <div className="App">
       <header className="App-header">
-        <ThemeColorContext.Consumer>
-    {
-      ({color, setColor}) => (
-        <ColorThemeMenu />
-      )
-    }
-
-        </ThemeColorContext.Consumer>
-     
+      <AppRoutes />
       </header>
     </div>
+          </BrowserRouter>
+          </AppContextWrapper>
   );
 }
 
