@@ -2,7 +2,7 @@
 FullStack Mern Web site
 
 # Installation
- * git clone <this_url> && cd <repo_name>
+ * git clone [<this_url>](https://github.com/Shaju06/Theme-Management.git) && cd Theme-Management
 * install npm on client and server
 * cd client
 * npm install
